@@ -34,7 +34,6 @@ const Navbar = () => {
         <input
           type="search"
           placeholder="Search for movies"
-          value={word}
           onChange={(e) => setWord(e.target.value)}
           className="bg-transparent border-none outline-none w-full text-black placeholder:text-black px-2"
         />

@@ -32,13 +32,24 @@ const MovieDetails = () => {
     fetchData();
   }, [params]);
 
-  if (!movie) return <div>Loading...</div>;
+  if (!movie)
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <Image
+          src="/spinner.svg"
+          alt="spinner"
+          width={56}
+          height={56}
+          className="object-contain"
+        />
+      </div>
+    );
 
   return (
     <>
-      <div className="h-screen flex items-center justify-center">
-        <div className="w-full rounded relative grid grid-cols-2">
-          <div className="relative w-[400px] h-[450px]">
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-full px-10 py-14 h-full gap-20 rounded relative grid grid-cols-1 lg:grid-cols-2">
+          <div className="relative w-[300px] lg:w-[400px] h-[450px] mx-auto">
             <Image
               src={`https://image.tmdb.org/t/p/w500` + movie.poster_path}
               alt={movie.title}
@@ -57,7 +68,7 @@ const MovieDetails = () => {
                 </p>
               </div>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center flex-wrap">
               {movie.genres.map((genre) => (
                 <p
                   className="py-1 px-2 text-sm bg-[#161921] rounded-sm w-max"
@@ -67,7 +78,7 @@ const MovieDetails = () => {
               ))}
             </div>
             <div>
-              <p className="w-10/12 text-justify my-4 text-[#999]">
+              <p className="lg:w-10/12 text-justify my-4 text-[#999]">
                 {movie.overview}
               </p>
             </div>

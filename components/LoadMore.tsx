@@ -4,10 +4,9 @@ import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import { fetchMovies } from "../app/action";
+import MovieCard, { MovieProp } from "./MovieCard";
 
 let page = 2;
-
-export type MovieProp = JSX.Element;
 
 function LoadMore() {
   const { ref, inView } = useInView();
@@ -21,10 +20,12 @@ function LoadMore() {
       const delay = 500;
 
       const timeoutId = setTimeout(() => {
-        fetchMovies(page).then((res) => {
-          setData([...data, ...res]);
-          page++;
-        });
+        const fetchData = async () => {
+          const res = await fetchMovies(page);
+          setData((prevData) => [...prevData, ...res]);
+        };
+        fetchData();
+        page++;
 
         setIsLoading(false);
       }, delay);
@@ -36,13 +37,15 @@ function LoadMore() {
   return (
     <>
       <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
-        {data}
+        {data.map((item: MovieProp, index: number) => (
+          <MovieCard key={item.id} movie={item} index={index} />
+        ))}
       </section>
       <section className="flex justify-center items-center w-full">
         <div ref={ref}>
           {inView && isLoading && (
             <Image
-              src="./spinner.svg"
+              src="/spinner.svg"
               alt="spinner"
               width={56}
               height={56}

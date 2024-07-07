@@ -8,9 +8,9 @@
 
 ## <a name="features">🔋 Features</a>
 
-👉 **Search and Browse Movies:** Implement a search functionality to allow users to search for movies by title, genre, or actor. Provide browsing options such as trending movies, top-rated movies, and new releases.
+👉 **Search and Browse Movies:** Implement a search functionality to allow users to search for movies by title. Provide browsing options such as popular movies.
 
-👉 **Movie Details and Reviews:** Display detailed information about each movie, including synopsis, release date, cast, director, and ratings. Allow users to rate and review movies.
+👉 **Movie Details and Reviews:** Display detailed information about each movie, including synopsis, release date, and ratings.
 
 **Prerequisites**
 
