@@ -2,10 +2,11 @@
 
 import Hero from "@/components/Hero";
 import MovieCard, { MovieProp } from "@/components/MovieCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { fetchMovies } from "./action";
 import LoadMore from "@/components/LoadMore";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 const Page = () => {
   const [data, setData] = useState([]);
@@ -44,4 +45,21 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default function HomePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="h-screen flex items-center justify-center">
+          <Image
+            src="/spinner.svg"
+            alt="spinner"
+            width={56}
+            height={56}
+            className="object-contain"
+          />
+        </div>
+      }>
+      <Page />
+    </Suspense>
+  );
+}
