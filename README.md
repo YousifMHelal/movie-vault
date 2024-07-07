@@ -12,6 +12,8 @@
 
 👉 **Movie Details and Reviews:** Display detailed information about each movie, including synopsis, release date, and ratings.
 
+👉 **infinite scroll:** The infinite scroll feature allows the page to continuously load more movies as you scroll down.
+
 **Prerequisites**
 
 Make sure you have the following installed on your machine:
